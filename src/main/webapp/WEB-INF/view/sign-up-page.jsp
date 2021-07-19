@@ -3,11 +3,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Sign In</title>
+<meta http-equiv="Pragma" content="no-cache">
+<title>Sign Up</title>
 
 <style>
 label, input {
-	margin-top: 50px;
+	margin-top: 40px;
 	font-size: 18px;
 	font-weight: 600;
 	background-color: transparent;
@@ -17,6 +18,7 @@ h1 {
 	font-size: 20px;
 	font-weight: 700;
 	margin-left: 70px;
+	margin-top: 25px;
 }
 
 #login_in {
@@ -46,7 +48,7 @@ input {
 <body bgcolor="#f9a427">
 	<div align="center">
 		<form action="new_account_info_page">
-			<h1 align="center">*** Sign In ***</h1>
+			<h1 align="center">*** Sign Up ***</h1>
 			<label for="first_name_input">First Name : </label> <input
 				type="text" name="first_name" id="first_name_input"> <br>
 			<label for="last_name_input">Last Name : </label> <input type="text"

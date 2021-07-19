@@ -34,10 +34,10 @@ p {
 </style>
 </head>
 <body>
-	<form action="eBankSite/sign-in">
+	<form action="eBankSite/sign-in-page">
 		<button type="submit">Sign in</button>
 	</form>
-	<form action="sign-up-page">
+	<form action="eBankSite/sign-up-page">
 		<button type="submit">Sign up</button>
 	</form>
 	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed

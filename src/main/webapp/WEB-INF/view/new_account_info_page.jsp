@@ -51,8 +51,8 @@ button {
 	<p align="center">Name : <%=name%></p> <br>
 	<p align="center">Login : <%=login%></p> <br>
 	<p align="center">Password : <%=password%></p> <br></div>
-	<form action="sign-up-page">
-		<button type="submit">Sign up</button>
+	<form action="sign-in-page">
+		<button type="submit">Sign in</button>
 	</form>
 </body>
 </html>
