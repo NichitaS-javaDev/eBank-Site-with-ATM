@@ -3,8 +3,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta http-equiv="Pragma" content="no-cache">
 <title>Sign Up</title>
+
+<script type="text/javascript">
+	if (performance.navigation.type == 2) {
+		location.reload(true);
+	}
+</script>
 
 <style>
 label, input {

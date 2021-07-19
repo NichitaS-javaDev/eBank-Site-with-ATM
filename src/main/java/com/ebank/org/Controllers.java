@@ -23,7 +23,7 @@ public class Controllers {
 			Connection conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost/ebank?serverTimezone=UTC&useSSL=false", "root", "root"
 					);
-			return conn.createStatement();
+			return conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
@@ -110,23 +110,28 @@ public class Controllers {
 		return "/WEB-INF/view/sign-in-page.jsp";
 	}
 	
-	@RequestMapping
+	@RequestMapping("client-info-page")
 	public String goToClientAccPage(HttpServletRequest request, Model model) {
-//		ResultSet rs = createDbStatement().executeQuery(
-//				"select * from clients_site_log_info where Login = '" + request.getParameter("login") + "',' and "
-//						+ "Password = '" + request.getParameter("pass") + "';");
-//		rs.next();
-//		
-//		ResultSet result = createDbStatement().executeQuery(
-//				"select * from clients_counts_info where FirstName = '" + rs.getString("FirstName") + "',' and "
-//						+ "LastName = '" + rs.getString("LastName") + "';");
-//		
-//		model.addAttribute("name", result.getString("FirstName") + result.getString("LastName"));
-//		model.addAttribute("name", result.getString("FirstName") + result.getString("LastName"));
-//		model.addAttribute("name", result.getString("FirstName") + result.getString("LastName"));
-//		model.addAttribute("name", result.getString("FirstName") + result.getString("LastName"));
-//		model.addAttribute("name", result.getString("FirstName") + result.getString("LastName"));
-		return null;
+		try {
+			ResultSet rs = createDbStatement().executeQuery(
+					"select * from clients_site_log_info where Login = '" + request.getParameter("login") + "' and "
+							+ "Password = '" + request.getParameter("pass") + "';");
+			rs.first();
+			
+			ResultSet result = createDbStatement().executeQuery(
+					"select * from clients_counts_info where FirstName = '" + rs.getString("FirstName") + "' and "
+							+ "LastName = '" + rs.getString("LastName") + "';");
+			result.first();
+			
+			model.addAttribute("name", result.getString("FirstName") + " " + result.getString("LastName"));
+			model.addAttribute("count_num", result.getString("CountNumber"));
+			model.addAttribute("amount", result.getString("Amount") + " " + result.getString("Currency"));
+			model.addAttribute("card_num", result.getString("CardNumber"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return "/WEB-INF/view/client-info-page.jsp";
 	}
 	
 }
